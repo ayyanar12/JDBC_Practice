@@ -5,9 +5,9 @@ public class JdbcDemo {
 
 	public static void main(String[] args) throws Exception {
 //		readValue();
-//		updateValue();
-//		updatedynamicValue();
-//		updatedynamicValueUsingPreparedStatement() ;
+//		insertValue();
+//		insertdynamicValue();
+//		insertdynamicValueUsingPreparedStatement() ;
 //	deleteRow();
 //		updateRow();
 		readValueWithCondition();
@@ -31,7 +31,7 @@ public class JdbcDemo {
 			con.close();
 			
 	}
-	public  static void updateValue() throws Exception{
+	public  static void insertValue() throws Exception{
 		String url="jdbc:mysql://localhost:3306/info";
 		String username="root";
 		String password="Ayyanar@123";
@@ -43,7 +43,7 @@ public class JdbcDemo {
 		
 		
 	}
-	public  static void updatedynamicValue() throws Exception{
+	public  static void insertynamicValue() throws Exception{
 		String url="jdbc:mysql://localhost:3306/info";
 		String username="root";
 		String password="Ayyanar@123";
@@ -57,7 +57,7 @@ public class JdbcDemo {
 		int len=st.executeUpdate(query);
 		System.out.println("no of row Affected   "+len);
 	}
-	public  static void updatedynamicValueUsingPreparedStatement() throws Exception{
+	public  static void insertdynamicValueUsingPreparedStatement() throws Exception{
 		String url="jdbc:mysql://localhost:3306/info";
 		String username="root";
 		String password="Ayyanar@123";
@@ -121,3 +121,4 @@ public class JdbcDemo {
 		
 	
 		
+
