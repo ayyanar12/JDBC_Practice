@@ -1,0 +1,123 @@
+package jdbc;
+import java.sql.*;
+
+public class JdbcDemo {
+
+	public static void main(String[] args) throws Exception {
+//		readValue();
+//		updateValue();
+//		updatedynamicValue();
+//		updatedynamicValueUsingPreparedStatement() ;
+//	deleteRow();
+//		updateRow();
+		readValueWithCondition();
+		
+	}
+	
+	public static void readValue() throws Exception {
+			String url="jdbc:mysql://localhost:3306/info";
+			String userName="root";
+			String password="Ayyanar@123";
+			Connection con=DriverManager.getConnection(url,userName,password);
+			String query="select * from employee";
+			Statement st=con.createStatement();
+			ResultSet rs=st.executeQuery(query);
+			while(rs.next()) {
+			
+			System.out.println("id is  "+rs.getInt(1));
+			System.out.println("name is  "+rs.getString(2));
+			System.out.println("salary is  "+rs.getInt(3));
+			}
+			con.close();
+			
+	}
+	public  static void updateValue() throws Exception{
+		String url="jdbc:mysql://localhost:3306/info";
+		String username="root";
+		String password="Ayyanar@123";
+		String query="insert into employee values(4,'subash',60000);";
+		Connection cn=DriverManager.getConnection(url,username,password);
+		Statement st=cn.createStatement();
+		int len=st.executeUpdate(query);
+		System.out.println("no of row Affected   "+len);
+		
+		
+	}
+	public  static void updatedynamicValue() throws Exception{
+		String url="jdbc:mysql://localhost:3306/info";
+		String username="root";
+		String password="Ayyanar@123";
+		int id=6;
+		String name="sarath";
+		int salary=40000;
+//		String query="insert into employee values(4,'subash',60000);";
+		String query="insert into employee values("+id+",'"+name+"',"+salary+");";
+		Connection cn=DriverManager.getConnection(url,username,password);
+		Statement st=cn.createStatement();
+		int len=st.executeUpdate(query);
+		System.out.println("no of row Affected   "+len);
+	}
+	public  static void updatedynamicValueUsingPreparedStatement() throws Exception{
+		String url="jdbc:mysql://localhost:3306/info";
+		String username="root";
+		String password="Ayyanar@123";
+		int id=7;
+		String name="navin";
+		int salary=50000;
+//		String query="insert into employee values(4,'subash',60000);";
+		String query="insert into employee values(?,?,?);";
+		Connection cn=DriverManager.getConnection(url,username,password);
+		PreparedStatement pst=cn.prepareStatement(query);
+		pst.setInt(1, id);
+		pst.setString(2, name);
+		pst.setInt(3, salary);
+		int len=pst.executeUpdate();
+		System.out.println("no of row Affected   "+len);
+	}
+	public  static void deleteRow() throws Exception{
+		String url="jdbc:mysql://localhost:3306/info";
+		String username="root";
+		String password="Ayyanar@123";
+		String query="delete from employee where id=2";
+		Connection cn=DriverManager.getConnection(url,username,password);
+		Statement st=cn.createStatement();
+		int len=st.executeUpdate(query);
+		System.out.println("no of row Affected   "+len);
+		
+		
+	}
+	public  static void updateRow() throws Exception{
+		String url="jdbc:mysql://localhost:3306/info";
+		String username="root";
+		String password="Ayyanar@123";
+		String query="update employee set salary=100000 where id=4";
+		Connection cn=DriverManager.getConnection(url,username,password);
+		Statement st=cn.createStatement();
+		int len=st.executeUpdate(query);
+		System.out.println("no of row Affected   "+len);
+		
+		
+	}
+	public static void readValueWithCondition() throws Exception {
+		String url="jdbc:mysql://localhost:3306/info";
+		String userName="root";
+		String password="Ayyanar@123";
+		Connection con=DriverManager.getConnection(url,userName,password);
+		String query="select * from employee where id=4";
+		Statement st=con.createStatement();
+		ResultSet rs=st.executeQuery(query);
+		while(rs.next()) {
+		
+		System.out.println("id is  "+rs.getInt(1));
+		System.out.println("name is  "+rs.getString(2));
+		System.out.println("salary is  "+rs.getInt(3));
+		}
+		con.close();
+		
+}
+}
+	
+		
+		
+	
+		
